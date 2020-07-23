@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/test-tileset.png-9e184ecb06653a9a8e326d5a3c99ca71.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://paki/assets_lib_for_testlevel/test-tileset.png"
+dest_files=[ "res://.import/test-tileset.png-9e184ecb06653a9a8e326d5a3c99ca71.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
