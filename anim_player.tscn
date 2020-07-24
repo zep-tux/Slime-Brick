@@ -40,44 +40,24 @@ animations = [ {
 "name": "Idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 10 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "WalkSquat",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 23 ) ],
 "loop": false,
-"name": "EndFall",
-"speed": 10.0
+"name": "Fall",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 10.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "IdleFall",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "SquatDown",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "WalkSquat",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 22 ) ],
-"loop": false,
-"name": "IdleJump",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 29 ), ExtResource( 16 ) ],
-"loop": false,
-"name": "SquatUp",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ), ExtResource( 30 ) ],
-"loop": false,
-"name": "Damage",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 20 ) ],
@@ -85,21 +65,38 @@ animations = [ {
 "name": "Jump",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 23 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ), ExtResource( 30 ) ],
 "loop": false,
-"name": "Fall",
-"speed": 0.0
+"name": "Damage",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "IdleJump",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "IdleFall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 29 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "SquatUp",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 10 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "EndFall",
+"speed": 10.0
 } ]
 
 [node name="player" type="KinematicBody2D"]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 3
+frame = 5
 playing = true
 centered = false
