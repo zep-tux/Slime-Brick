@@ -31,13 +31,8 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
-"loop": true,
+"loop": false,
 "name": "fall",
 "speed": 5.0
 }, {
@@ -47,13 +42,18 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
+"loop": false,
 "name": "idleJump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": false,
+"name": "jump",
 "speed": 5.0
 } ]
 
@@ -69,7 +69,9 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "endFall 1"
+animation = "idleJump"
+frame = 1
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
