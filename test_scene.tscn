@@ -10,10 +10,11 @@ position = Vector2( 352.065, -257.678 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 8 )
 format = 1
-tile_data = PoolIntArray( 3932144, 5, 0, 3997674, 0, 0, 3997675, 0, 0, 3997676, 0, 0, 3997677, 0, 0, 3997678, 0, 0, 3997679, 0, 0, 3997680, 1, 0, 3997681, 1, 0 )
+tile_data = PoolIntArray( 3604464, 5, 0, 3669999, 5, 0, 3735534, 5, 0, 3801069, 5, 0, 3866604, 5, 0, 3932139, 5, 0, 3997674, 0, 0, 3997675, 0, 0, 3997676, 0, 0, 3997677, 0, 0, 3997678, 0, 0, 3997679, 0, 0, 3997680, 1, 0, 3997681, 1, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 9.8361, 194.868 )
 scale = Vector2( 1.5, 1.5 )
 collision_mask = 2147483649
 GRAVITY = 300
+JUMP_POWER = 150
