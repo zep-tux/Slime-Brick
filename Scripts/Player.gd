@@ -16,26 +16,26 @@ func _process(delta):
 			$AnimatedSprite.play("walk")
 		else: 
 			$AnimatedSprite.play("jump")
-			
+				
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 		$AnimatedSprite.flip_h = true
-		if is_on_floor():# Если мы на земле, можем двигаться как обычно (2)
+		if is_on_floor(): # Если мы на земле, можем двигаться как обычно (2)
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("jump")
-			
-	elif Input.is_action_pressed("ui_up") && is_on_floor(): # Если прыжок на месте делаем анимацыю прыжка
-		velocity.y = -JUMP_POWER
-		$AnimatedSprite.play("idleJump") # TODO: Фикс анимации
 		
-	elif !is_on_floor() && velocity.y > JUMP_POWER:
-		$AnimatedSprite.play("fall")
-	
 	else: # Если просто стоим, то мы просто стоим =) 
 		velocity.x = 0
 		if is_on_floor(): 
 			$AnimatedSprite.play("idle") 
+		
+	if !is_on_floor() && velocity.y > JUMP_POWER:
+		$AnimatedSprite.play("fall")
+		
+	if Input.is_action_pressed("ui_up") && is_on_floor(): # Если прыжок на месте делаем анимацыю прыжка
+		velocity.y = -JUMP_POWER
+		$AnimatedSprite.play("idleJump") # TODO: Фикс анимации
 	
 	velocity.y +=  (GRAVITY * delta) # Гравитация каждый фиксированный кадр
 	velocity = move_and_slide(velocity, FLOOR) 
