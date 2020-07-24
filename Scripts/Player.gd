@@ -7,6 +7,10 @@ export var JUMP_POWER: int; # Скорость прыжка
 const FLOOR = 	Vector2(0, -1)
 var velocity = Vector2()
 
+
+var lives = 0
+
+
 func _process(delta):
 	# TODO: Фикс, при сочетании других клавиш не работает прыжок
 	if Input.is_action_pressed("ui_right"):
@@ -29,7 +33,7 @@ func _process(delta):
 		velocity.y = -JUMP_POWER
 		$AnimatedSprite.play("idleJump") # TODO: Фикс анимации
 		
-	elif !is_on_floor() && velocity.y > JUMP_POWER:
+	elif is_on_floor() && velocity.y > JUMP_POWER:
 		$AnimatedSprite.play("fall")
 	
 	else: # Если просто стоим, то мы просто стоим =) 
@@ -37,5 +41,8 @@ func _process(delta):
 		if is_on_floor(): 
 			$AnimatedSprite.play("idle") 
 	
-	velocity.y +=  (GRAVITY * delta) # Гравитация каждый фиксированный кадр
+	velocity.y += (GRAVITY * delta) # Гравитация каждый фиксированный кадр
 	velocity = move_and_slide(velocity, FLOOR) 
+
+func add_live():
+	lives += 1
