@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var lives = 0
+
 export var SPEED: int # Скорость
 export var GRAVITY: int; # Скорость падения
 export var JUMP_POWER: int; # Скорость прыжка
@@ -39,3 +41,6 @@ func _process(delta):
 	
 	velocity.y +=  (GRAVITY * delta) # Гравитация каждый фиксированный кадр
 	velocity = move_and_slide(velocity, FLOOR) 
+	
+func add_live():
+	lives += 1
