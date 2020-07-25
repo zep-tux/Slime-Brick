@@ -6,6 +6,7 @@ export var SPEED: int; # Скорость
 export var GRAVITY: int; # Скорость падения
 export var JUMP_POWER: int; # Скорость прыжка
 
+var life = 3;
 var is_fall = false;
 var is_fall_anim = false
 const FLOOR = 	Vector2(0, -1)
@@ -58,3 +59,14 @@ func _on_AnimatedSprite_animation_finished():
 		is_fall = false
 		is_fall_anim = false
 	pass # Replace with function body.
+
+func damage():
+	$AnimatedSprite.play("Damage")
+
+func die():
+	$AnimatedSprite.play("Die")
+	#Здесь нужен таймер на две секунды
+	if life < 0 :
+		G.scene('game_over')
+	else:
+		 G.scene(G.level())
