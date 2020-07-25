@@ -1,12 +1,11 @@
 extends KinematicBody2D
 
-var lives = 0
-
 export var SPEED: int; # Скорость
 export var GRAVITY: int; # Скорость падения
 export var JUMP_POWER: int; # Скорость прыжка
 
-var life = 3;
+
+var lives = 3;
 var is_fall = false;
 var is_fall_anim = false
 const FLOOR = 	Vector2(0, -1)
@@ -53,7 +52,6 @@ func _process(delta):
 func add_live():
 	lives += 1
 
-
 func _on_AnimatedSprite_animation_finished():
 	if is_fall: 
 		is_fall = false
@@ -65,8 +63,12 @@ func damage():
 
 func die():
 	$AnimatedSprite.play("Die")
-	#Здесь нужен таймер на две секунды
-	if life < 0 :
-		G.scene('game_over')
-	else:
-		 G.scene(G.level())
+	lives -= 1
+	$GUI/CanvasLayer/NinePatchRect.texture.set_current_frame(lives)
+	if lives <= 0 :
+		Main.scene('game_over')
+#	else:
+#		Main.scene(Main.level())
+
+func _ready(): # Тестирование
+	die();

@@ -55,24 +55,9 @@ animations = [ {
 "name": "Walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "SquatDown",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": false,
-"name": "Jump",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ), ExtResource( 30 ) ],
-"loop": false,
+"loop": true,
 "name": "Damage",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 22 ) ],
-"loop": false,
-"name": "IdleJump",
 "speed": 10.0
 }, {
 "frames": [  ],
@@ -89,6 +74,21 @@ animations = [ {
 "loop": false,
 "name": "EndFall",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "IdleJump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "SquatDown",
+"speed": 10.0
 } ]
 
 [node name="player" type="KinematicBody2D"]
@@ -96,7 +96,7 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 5
+animation = "Damage"
+frame = 2
 playing = true
 centered = false
