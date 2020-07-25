@@ -33,6 +33,7 @@ animations = [ {
 script = ExtResource( 17 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2147483649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.629959, 0.15749 )
@@ -41,6 +42,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 14
+frame = 15
 playing = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

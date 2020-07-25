@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var lives = 0
 
 export var SPEED: int; # Скорость
 export var GRAVITY: int; # Скорость падения
@@ -50,8 +49,8 @@ func _process(delta):
 	velocity.y +=  (GRAVITY * delta) # Гравитация каждый фиксированный кадр
 	velocity = move_and_slide(velocity, FLOOR) 
 	
-func add_live():
-	lives += 1
+func add_life():
+	life += 1
 
 
 func _on_AnimatedSprite_animation_finished():
@@ -67,6 +66,4 @@ func die():
 	$AnimatedSprite.play("Die")
 	#Здесь нужен таймер на две секунды
 	if life < 0 :
-		G.scene('game_over')
-	else:
-		 G.scene(G.level())
+		get_tree().change_scene("res://test_scene.tscn")
