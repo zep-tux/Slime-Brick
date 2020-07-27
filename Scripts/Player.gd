@@ -31,7 +31,7 @@ func _process(delta):
 		else:
 			$AnimatedSprite.play("jump")
 	
-	elif Input.is_action_pressed("ui_end"):
+	elif Input.is_action_pressed("ui_page_up"):
 		damage(1)
 	
 	elif !is_damage: # Если просто стоим, то мы просто стоим =) 
