@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/DmgPress.gd" type="Script" id=1]
 [ext_resource path="res://TileSets/Interactive/Press/2.2.png" type="Texture" id=2]
@@ -6,28 +6,54 @@
 [ext_resource path="res://TileSets/Interactive/Press/2.png" type="Texture" id=4]
 [ext_resource path="res://TileSets/Interactive/Press/2.1.png" type="Texture" id=5]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.85689, 13.6572 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6.0526, 16.033 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Up"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -30 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Пресс"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "off",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "on",
-"speed": 0.0
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7.91074, 4.10728 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 6.0526, 16.033 )
 
 [node name="Press" type="Node2D"]
 
@@ -38,17 +64,9 @@ position = Vector2( 0, 32 )
 shape = SubResource( 1 )
 script = ExtResource( 1 )
 
-[node name="Static" type="StaticBody2D" parent="."]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Static"]
-frames = SubResource( 2 )
-animation = "off"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static"]
-position = Vector2( 0, -4 )
-shape = SubResource( 3 )
-
 [node name="Dynamic" type="StaticBody2D" parent="."]
+position = Vector2( 0, -9.6513 )
+z_index = -1
 
 [node name="1" type="Sprite" parent="Dynamic"]
 position = Vector2( 0, 8 )
@@ -61,4 +79,21 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dynamic"]
 position = Vector2( 0, 16 )
 shape = SubResource( 4 )
+
+[node name="KeyAnimation" type="AnimationPlayer" parent="Dynamic"]
+autoplay = "Пресс"
+anims/Up = SubResource( 5 )
+"anims/Пресс" = SubResource( 6 )
+
+[node name="Static" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Static"]
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 8
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static"]
+position = Vector2( 0, -4 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="Hit" to="Hit/CollisionShape2D" method="_on_Hit_body_entered"]
