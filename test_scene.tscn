@@ -21,4 +21,4 @@ GRAVITY = 300
 JUMP_POWER = 150
 
 [node name="Press" parent="." instance=ExtResource( 3 )]
-position = Vector2( -27.0212, 170.342 )
+position = Vector2( -23.2414, 151.443 )

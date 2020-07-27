@@ -11,10 +11,10 @@ const FLOOR = 	Vector2(0, -1)
 var velocity = Vector2()
 var is_damage = false
 
-var HP = 9;
+var HP = 3;
 
 func _process(delta):
-	if (HP % 3) == 0 && HP >= 0: $GUI/CanvasLayer/NinePatchRect.texture.set_current_frame(HP / 3)
+	$GUI/CanvasLayer/NinePatchRect.texture.set_current_frame(HP)
 	if Input.is_action_pressed("ui_right") && !is_anim && !is_damage:
 		velocity.x = SPEED
 		$AnimatedSprite.flip_h = false	
@@ -31,13 +31,15 @@ func _process(delta):
 		else:
 			$AnimatedSprite.play("jump")
 	
-	elif Input.is_action_pressed("ui_page_up"):
-		damage(1)
-	
 	elif !is_damage: # Если просто стоим, то мы просто стоим =) 
 		velocity.x = 0
 		if is_on_floor() && !is_anim: 
 			$AnimatedSprite.play("idle") 
+			
+			
+	if Input.is_action_just_pressed("ui_end"):
+		damage(1)
+		print(HP)
 	
 	if is_damage && is_on_floor():
 		is_damage = false
@@ -74,16 +76,17 @@ func damage(var damage: int):
 			velocity.x = -power
 		$AnimatedSprite.play("damage")
 		HP -= damage
-#		if HP <= 0 :
-#			 Main.scene('game_over')
+		if HP <= 0 :
+			Main.scene('test_scene')
+			die()
 #		else:
 #			Main.scene(Main.level())
 
 func die():
 	$AnimatedSprite.play("Die")
-	HP -= 3;
-#	if HP <= 0 :
-#		Main.scene('game_over')
+	Main.lives -= 1;
+	if Main.lives < 0 :
+		Main.scene('game_over')
 
 func _ready(): # Тестирование
-	die()
+	print(Main.lives)

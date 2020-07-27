@@ -50,6 +50,11 @@ animations = [ {
 "name": "endFall",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 18 ) ],
 "loop": false,
 "name": "jump",
@@ -59,11 +64,6 @@ animations = [ {
 "loop": false,
 "name": "idleJump",
 "speed": 0.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "fall",
-"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -79,7 +79,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "damage"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
