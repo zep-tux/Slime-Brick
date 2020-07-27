@@ -14,7 +14,7 @@ var is_damage = false
 var HP = 9;
 
 func _process(delta):
-	$GUI/CanvasLayer/NinePatchRect.texture.set_current_frame(HP / 3)
+	if (HP % 3) == 0 && HP >= 0: $GUI/CanvasLayer/NinePatchRect.texture.set_current_frame(HP / 3)
 	if Input.is_action_pressed("ui_right") && !is_anim && !is_damage:
 		velocity.x = SPEED
 		$AnimatedSprite.flip_h = false	
@@ -74,17 +74,16 @@ func damage(var damage: int):
 			velocity.x = -power
 		$AnimatedSprite.play("damage")
 		HP -= damage
-		if HP <= 0 :
-			Main.scene('game_over')
+#		if HP <= 0 :
+#			 Main.scene('game_over')
 #		else:
 #			Main.scene(Main.level())
 
 func die():
 	$AnimatedSprite.play("Die")
 	HP -= 3;
-	if HP <= 0 :
-		Main.scene('game_over')
+#	if HP <= 0 :
+#		Main.scene('game_over')
 
 func _ready(): # Тестирование
-	damage(6)
-	die();
+	die()
